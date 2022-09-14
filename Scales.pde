@@ -44,3 +44,27 @@ void scale(int x, int y) {
   }
 }
 
+//rgb coloring version (must disable colorMode)
+/*
+void scale(int x, int y) {
+  float r = (int)(Math.random()*256);
+  float g = (int)(Math.random()*256);
+  float b = (int)(Math.random()*256);
+  float w;
+  float l;
+  float curve;
+  noStroke();
+  for(int i = 0; i < 8; i++) {
+    fill(r-(i*0.8*r/8), g-(i*0.8*g/8), b-(i*0.8*b/8));
+    w =45-(i)*3;
+    l = 90 - i*8;
+    curve = 75 - i*8;
+    beginShape();
+    vertex(x-w, y);
+    bezierVertex(x-w, y, x-w, y+curve, x, y+l);
+    bezierVertex(x, y+l, x+w, y+curve, x+w, y);
+    vertex(x, y);
+    endShape();
+  }
+}
+*/
