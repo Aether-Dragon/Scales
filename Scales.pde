@@ -1,24 +1,34 @@
 void setup() {
   size(500, 500);  //feel free to change the size
   noLoop(); //stops the draw() function from repeating
+  frameRate(15);
   colorMode(HSB);
 }
 
 void draw() {
-  boolean shift = false;
-  for (int y = 500; y > -100; y -= 30) {
-    for (int x = -30; x < 550; x += 90) {
-      if (shift) 
-        scale(x+45, y);
-      else 
-        scale(x, y);
+    boolean shift = false;
+    for (int y = 500; y > -100; y -= 30) {
+      for (int x = -30; x < 550; x += 90) {
+        if (shift) 
+          scale(x+45, y);
+        else 
+          scale(x, y);
+      }
+      if (shift)
+        shift = false;
+      else
+        shift = true;
     }
-    if (shift)
-      shift = false;
-    else
-      shift = true;
-  }
 }
+
+void mousePressed() {
+  loop();
+}
+
+void mouseReleased() {
+  noLoop();
+}
+
 //hsb coloring version
 void scale(int x, int y) {
   float h = (int)(Math.random()*256);
